@@ -27,8 +27,6 @@ function App() {
           onSubmit={(e) => {
             e.preventDefault();
             setBursts(burstss);
-            console.log(form);
-            console.log(bursts);
           }}
         >
           <Form.Group
