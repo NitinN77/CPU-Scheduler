@@ -3,6 +3,7 @@ import "./Scheduler.css";
 import fcfs from '../algorithms/fcfs';
 import sjf from '../algorithms/sjf';
 
+
 function Scheduler({ algo, bursts, n }) {
   return (
     <div className="main">

@@ -34,7 +34,7 @@ const fcfs = (bursts) => {
           </thead>
           <tbody>
             {Array.from({ length: n }, (_, i) => (
-              <tr id={i}>
+              <tr key={i}>
                 <td>{i}</td>
                 <td>{tat[i]}</td>
                 <td>{bursts[i]}</td>

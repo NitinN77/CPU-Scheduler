@@ -1,49 +1,49 @@
 import { Table } from "react-bootstrap";
 
 const sjf = (bursts) => {
+    var burst = []
     const n = bursts.length
     var avg_wt = 0
     var avg_tat = 0
     var total = 0
-    var p = Array(100)
-    var wt = Array(100)
-    var tat = Array(100)
     for(var i=0;i<n;i++){
-        p[i]=i+1
+      burst.push({
+        "id": i+1,
+        "b": bursts[i],
+        "wt": 0,
+        "tat": 0,
+      })
     }
     for(var i=0;i<n;i++){
         var pos = i
         for(var j=i+1;j<n;j++){
-            if(bursts[j]<bursts[pos]){
+            if(burst[j].b<burst[pos].b){
                 pos = j
             }
         }
-        var temp = bursts[i]
-        bursts[i] = bursts[pos]
-        bursts[pos] = temp
-        temp=p[i]
-        p[i]=p[pos]
-        p[pos]=temp
+
+        [burst[i], burst[pos]] = [burst[pos], burst[i]]
     }
-    wt[0]=0
+    burst[0].wt=0
     for(var i=1;i<n;i++){
-        wt[i]=0
+        burst[i].wt=0
         for(var j=0;j<i;j++){
-            wt[i]+=+bursts[j]
+            burst[i].wt+=+burst[j].b
         }
-        total+=+wt[i]
+        total+=+burst[i].wt
     }
     avg_wt = total/n;
     total = 0
     for(var i=0;i<n;i++){
-        tat[i]=+bursts[i] + +wt[i]
-        total+=+tat[i]
+        burst[i].tat=+burst[i].b + +burst[i].wt
+        total+=+burst[i].tat
     }
     avg_tat = total/n
-    console.log(wt,tat)
+    
     return(
         <>
         <Table striped bordered hover>
+          
           <thead>
             <tr>
               <th>Process</th>
@@ -55,12 +55,12 @@ const sjf = (bursts) => {
           </thead>
           <tbody>
             {Array.from({ length: n }, (_, i) => (
-              <tr id={i}>
-                <td>{p[i]}</td>
-                <td>{tat[i]}</td>
-                <td>{bursts[i]}</td>
-                <td>{wt[i]}</td>
-                <td>{tat[i]}</td>
+              <tr key={i}>
+                <td>{burst[i].id}</td>
+                <td>{burst[i].tat}</td>
+                <td>{burst[i].b}</td>
+                <td>{burst[i].wt}</td>
+                <td>{burst[i].tat}</td>
               </tr>
             ))}
           </tbody>
