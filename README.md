@@ -6,4 +6,4 @@
 
 ## SJF
 
-![](https://i.imgur.com/1QXqLqe.png)
+![](https://i.imgur.com/TplLAnP.png)
