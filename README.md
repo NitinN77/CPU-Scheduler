@@ -1,9 +1,9 @@
 # CPU Scheduler 
 
-## FCFS
+## First Come, First Serve
 
 ![](https://github.com/VoidlessVoid7/CPU-Scheduler/blob/main/readme/fcfsna.png)
 
-## SJF
+## Shortest Job First 
 
 ![](https://i.imgur.com/Af8dxPxg.png)
